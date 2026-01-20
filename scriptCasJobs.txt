@@ -1,0 +1,22 @@
+SELECT
+    u.OBJID,
+    u.RA_DEG,
+    u.DEC_DEG,
+
+    n.specObjID,
+    n.z,
+    n.zErr,
+    n.zWarning,
+    n.plate,
+    n.mjd,
+    n.fiberID,
+    n.distance   
+
+INTO MyDB.MyCoords_WithZ   
+
+FROM MyDB.MyTable AS u
+CROSS APPLY dbo.fGetNearestSpecObjEq(
+    u.RA_DEG,        
+    u.DEC_DEG,       
+    0.05             
+) AS n;

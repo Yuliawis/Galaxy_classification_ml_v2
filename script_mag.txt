@@ -1,0 +1,25 @@
+SELECT
+    u.OBJID,
+    u.RA_DEG,
+    u.DEC_DEG,
+
+    p.run,
+    p.rerun,
+    p.camcol,
+    p.field,
+    dbo.fPhotoTypeN(p.type) AS type,
+    p.modelMag_u,
+    p.modelMag_g,
+    p.modelMag_r,
+    p.modelMag_i,
+    p.modelMag_z
+
+INTO MyDB.MyCoords_mag
+FROM MyDB.MyTable_1 AS u
+CROSS APPLY dbo.fGetNearestObjEq(       
+    u.RA_DEG,
+    u.DEC_DEG,
+    0.05
+) AS n
+JOIN PhotoObjAll AS p
+    ON p.objid = n.objid;
