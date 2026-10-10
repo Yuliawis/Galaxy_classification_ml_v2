@@ -15,7 +15,7 @@ Labels are derived from citizen-science vote (GalaxyZoo) fractions (SPIRAL / ELL
 
 | File | Description |
 |------|-------------|
-| `try3.py` | Main training script (data matching, model training, evaluation) |
+| `main.py` | Main training script (data matching, model training, evaluation) |
 | `scriptCasJobs.txt` | SDSS CasJobs SQL query to attach spectroscopic redshifts |
 | `script_mag.txt` | SDSS CasJobs SQL query to attach photometric magnitudes |
 | `predicted_galaxy_types.csv` | Model predictions on unseen SDSS cutouts (OBJID, filename, class, confidence) |
